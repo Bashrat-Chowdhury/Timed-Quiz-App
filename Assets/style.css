@@ -1,0 +1,30 @@
+nav {
+    display: flex;
+    background-color: rgb(96, 58, 244);
+  }
+
+ /*Added style to nav bar element*/
+  nav a {
+    color: white;
+    padding: 14px 20px;
+  }
+
+  h1 {
+    text-align: center;
+}
+  body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+
+  .startQuiz{
+    flex-direction: row;
+    padding: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    border-style: none;
+    border-width: 1px;
+  }
+
+
+ 
