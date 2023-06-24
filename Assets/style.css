@@ -16,6 +16,11 @@ nav {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
 
+  .time{
+    color: azure;
+    font-weight: bolder;
+  }
+
   .startQuiz{
     flex-direction: row;
     padding: 10px;
@@ -25,6 +30,13 @@ nav {
     border-style: none;
     border-width: 1px;
   }
+
+  .quiz-container {
+    display: none;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 
 .submit-btn {

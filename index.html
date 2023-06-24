@@ -11,8 +11,8 @@
   <body>
     <header>
       <nav>
-          <a href=http://127.0.0.1:5500/highscores.html>View Highscores</a>
-          <p class="time" style="text-align:right;"></p>
+          <a class="highscoreLink" href=http://127.0.0.1:5500/highscores.html>View Highscores</a>
+          <p class="time"></p>
         
       </nav>
     </header>
@@ -27,6 +27,13 @@
                 <button class="start-btn">Start Quiz!</button>
               </section>
     
+            </div>
+
+            <div id="quiz" class="quiz-container">
+                <div id="question"></div>
+                <div id="options"></div>
+                <button class="submit-btn">Submit</button>
+                <div id="result" class="result"></div>
             </div>
 
             <script src="./Assets/script.js"></script>
