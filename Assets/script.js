@@ -6,8 +6,7 @@ var startButton = document.querySelector(".start-btn");
 startButton.addEventListener("click", function() {
 //Used Event Listener to hide intro and start time after user clicks "Start Quiz"
 quizintro.setAttribute("style", "display: none");
-HSlink.setAttribute("style", "display: none");
-mainQuiz.setAttribute("style", "display: flex")
+mainQuiz.setAttribute("style", "display: flex; flex-direction: column")
 setTime();
 loadQuestion();
 })
@@ -59,13 +58,14 @@ function setTime() {
 }
 
 var currentQuestion = 0;
-//score = 0;
+score = 0;
+
+
+var questionEl = document.getElementById("question");
+var optionsEl = document.getElementById("options");
 
 //Function to load questions on the browser 
 function loadQuestion() {
-    var questionEl = document.getElementById("question");
-    var optionsEl = document.getElementById("options");
-
 
     //displays current question 
     questionEl.innerHTML = quizData[currentQuestion].question;
@@ -84,6 +84,7 @@ function loadQuestion() {
 var submitButton = document.querySelector(".submit-btn");
 submitButton.addEventListener("click", checkAnswer);
 
+
 function checkAnswer() {
     var answer = document.querySelector('input[name="answer"]:checked');
     if (answer === null) {
@@ -91,7 +92,7 @@ function checkAnswer() {
     }
 
     if (parseInt(answer.value) === quizData[currentQuestion].answer) {
-        //score++;
+        score = score + 10;
     } else {
         //deducts 10 seconds if answer inpout is incorrect
         secondsLeft -= 10;
@@ -103,9 +104,57 @@ function checkAnswer() {
         //will load new question if quiz data had more questions 
         loadQuestion();
     } else {
-        //endQuiz();
+        endQuiz();
     }
 }
 
+var savebtn = document.getElementById("save");
+var initialsinput = document.getElementById("initials");
 
-loadQuestion();
+function endQuiz() {
+    //clearInterval(timerInterval);
+
+    var resultElement = document.getElementById("result");
+    resultElement.innerHTML = "Quiz completed. Your score is " + score + ". Enter your initals below to save your score.";
+    questionEl.setAttribute("style", "display: none");
+    optionsEl.setAttribute("style", "display: none");
+    submitButton.setAttribute("style", "display: none");
+    var initials = document.getElementsByClassName("form");
+    initials[0].setAttribute("style", "display: flex; justify-content: center;");
+    savebtn.setAttribute("style", "display: flex, margin: 50px;");
+}
+
+savebtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    var initial = initialsinput.value;
+    saveScore(initial, score);
+})
+
+//fucntion to store score data
+
+function saveScore(initial, score) {
+  let scores = JSON.parse(localStorage.getItem("initials"));
+  let tempScores = [];
+  if (scores) {
+    tempScores = scores
+  }
+
+  tempScores.push({ initial: initial, score: score });
+  localStorage.setItem("initials", JSON.stringify(tempScores));
+
+  scorecard();
+}
+
+//function to display scores
+
+function scorecard () {
+    let scores = JSON.parse(localStorage.getItem("initials"));
+    const list = document.getElementById("listContainer");
+    console.log(list);
+
+    for (let i=0; i < scores.length; i++){
+        const item = document.createElement("li");
+        item.textContent = scores[i];
+        list.appendChild(item);
+        }
+}

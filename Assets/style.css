@@ -39,7 +39,26 @@ nav {
 }
 
 
+.form {
+  display: none;
+  text-align: center;
+}
+
 .submit-btn {
     display: block;
-    margin-top: 10px;
+    margin-top: 15px;
+    max-width: 150px;
+    padding: auto;
+}
+
+.save {
+  display: none;
+  padding: 100px;
+  max-width: 150px;
+}
+
+.scorecard {
+  display: flex;
+  background-color: aqua;
+
 }
