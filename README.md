@@ -28,7 +28,7 @@ The user will land on a introductory page about the quiz when they open the appl
 
 
 
-Link to the deployed app: https://bashrat-chowdhury.github.io/challenge3-PasswordGenerator/ 
+Link to the deployed app: https://bashrat-chowdhury.github.io/challenge4_timedquiz/ 
 
 
 ## Credits
